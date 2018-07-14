@@ -9,6 +9,11 @@ import { Router } from '../../../node_modules/@angular/router';
 })
 export class AuthComponent implements OnInit {
   isLogin: boolean = false;
+  user = {
+    name: '',
+    email: '',
+    password: ''
+  }
 
   constructor(
     private authService: AuthService,
@@ -30,8 +35,8 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  signup() {
-    this.authService.emailPasswordSignUp('', '').then(response => console.log(response))
+  signup(email: string, password: string) {
+    this.authService.emailPasswordSignUp(email, password).then(response => console.log(response))
   }
 
 }

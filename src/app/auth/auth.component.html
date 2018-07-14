@@ -1,43 +1,50 @@
-<div fxLayout="row" fxLayoutAlign="space-between center">
+<div fxLayout="row" fxLayoutAlign="space-between center" class="container">
 
   <div fxFlex="60">
-    LEFT Side
   </div>
 
-  <div fxFlex="30">
-    <h3>Join the community</h3>
-    <p>Get access to blah blah bsjdasjd sajdlkjasd asjdlkajsldkj ksajdlajsdl</p>
+  <div fxFlex="30" class="form">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Join the community</mat-card-title>
+        <mat-card-subtitle>Get access to blah blah bsjdasjd sajdlkjasd asjdlkajsldkj ksajdlajsdl</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form fxLayout="row wrap" fxLayoutAlign="space-around center" novalidate autocomplete="off">
+          <mat-form-field fxFlex="100" *ngIf="!isLogin">
+            <button mat-icon-button matPrefix>
+              <mat-icon>person</mat-icon>
+            </button>
+            <input matInput placeholder="Name" type="text" [(ngModel)]="user.name" name="name">
+          </mat-form-field>
+          <mat-form-field fxFlex="100">
+            <button mat-icon-button matPrefix>
+              <mat-icon>email</mat-icon>
+            </button>
+            <input matInput placeholder="Email" type="email" [(ngModel)]="user.email" name="email">
+          </mat-form-field>
+          <mat-form-field fxFlex="100">
+            <button mat-icon-button matPrefix>
+              <mat-icon>lock</mat-icon>
+            </button>
+            <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" name="password">
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions fxLayout="row wrap" fxLayoutAlign="center start">
+        <button mat-stroked-button *ngIf="!isLogin" [disabled]="!user.email || !user.name || !user.password" class="primary" (click)="signup(user.email, user.password)">Sign Up</button>
+        <button mat-stroked-button *ngIf="isLogin" [disabled]="!user.email || !user.password" class="primary" (click)="login(user.email, user.password)">Log In</button>
+        <span fxFlex="100" class="authLink">
+          <span *ngIf="!isLogin">Already have an account?
+            <span class="link" (click)="isLogin = !isLogin">Login</span>
+          </span>
 
-    <form fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="!isLogin">
-      <mat-form-field fxFlex="48">
-        <input matInput placeholder="First Name" type="text" #fName>
-      </mat-form-field>
-      <mat-form-field fxFlex="48">
-        <input matInput placeholder="Last Name" type="text" #lName>
-      </mat-form-field>
-      <mat-form-field fxFlex="100">
-        <input matInput placeholder="Email" type="email" #email>
-      </mat-form-field>
-      <mat-form-field fxFlex="100">
-        <input matInput placeholder="Password" type="password" #password1>
-      </mat-form-field>
-      <mat-form-field fxFlex="100">
-        <input matInput placeholder="Confirm Password" type="password" #password2>
-      </mat-form-field>
-      <button mat-raised-button (click)="isLogin = !isLogin">Sign Up</button>
-      <button mat-button (click)="isLogin = !isLogin">Login</button>
-    </form>
+          <span *ngIf="isLogin">Do not have an account?
+            <span class="link" (click)="isLogin = !isLogin">Sign Up</span>
+          </span>
+        </span>
+      </mat-card-actions>
+    </mat-card>
 
-    <form fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="isLogin">
-      <mat-form-field fxFlex="100">
-        <input matInput placeholder="Email" type="email" #email>
-      </mat-form-field>
-      <mat-form-field fxFlex="100">
-        <input matInput placeholder="Password" type="password" #password1>
-      </mat-form-field>
-      <button mat-raised-button (click)="isLogin = !isLogin">Sign Up</button>
-      <button mat-button (click)="isLogin = !isLogin">Login</button>
-    </form>
   </div>
-
 </div>

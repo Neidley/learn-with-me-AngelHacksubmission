@@ -1,8 +1,25 @@
-.left{
-    display: inline-block;
-    width: 70%
+.container{
+    height: 100vh;
+    background-image: url("https://images.pexels.com/photos/1181233/pexels-photo-1181233.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.right{
-    display: inline-block;
+.form{
+    opacity: .9;
+    margin-right: 20px;
+}
+
+.authLink{
+    margin: 8px;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+.link{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
 }
