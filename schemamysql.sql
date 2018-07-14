@@ -1,7 +1,7 @@
 drop database if exists masterDb;
 
 create database masterDb;
-use master Db;
+use masterDb;
 
 
 
@@ -30,9 +30,7 @@ CREATE TABLE courses
   course_url VARCHAR(255) NOT NULL,
   author VARCHAR(25) DEFAULT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
--- ratings????
-  PRIMARY KEY (course_id),
-  FOREIGN KEY (user_id) REFERENCES users (user_id)
+  PRIMARY KEY (course_id)
 );
 
 CREATE TABLE courseforuser
@@ -40,7 +38,7 @@ CREATE TABLE courseforuser
   user_id INT NOT NULL,
   course_id INT NOT NULL,
   PRIMARY KEY (user_id, course_id),
-  FOREIGN KEY (user_id) REFERENCES users (user_id)
+  FOREIGN KEY (user_id) REFERENCES users (user_id),
   FOREIGN KEY (course_id) REFERENCES courses (course_id)
 );
 
