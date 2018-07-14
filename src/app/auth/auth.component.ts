@@ -8,6 +8,7 @@ import { Router } from '../../../node_modules/@angular/router';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
+  isLogin: boolean = false;
 
   constructor(
     private authService: AuthService,

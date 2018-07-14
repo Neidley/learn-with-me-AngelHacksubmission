@@ -1,3 +1,43 @@
-<input type="email" placeholder="email" #email>
-<input type="password" placeholder="password" #password>
-<button (click)="login(email.value, password.value)">Login</button>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+
+  <div fxFlex="60">
+    LEFT Side
+  </div>
+
+  <div fxFlex="30">
+    <h3>Join the community</h3>
+    <p>Get access to blah blah bsjdasjd sajdlkjasd asjdlkajsldkj ksajdlajsdl</p>
+
+    <form fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="!isLogin">
+      <mat-form-field fxFlex="48">
+        <input matInput placeholder="First Name" type="text" #fName>
+      </mat-form-field>
+      <mat-form-field fxFlex="48">
+        <input matInput placeholder="Last Name" type="text" #lName>
+      </mat-form-field>
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="Email" type="email" #email>
+      </mat-form-field>
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="Password" type="password" #password1>
+      </mat-form-field>
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="Confirm Password" type="password" #password2>
+      </mat-form-field>
+      <button mat-raised-button (click)="isLogin = !isLogin">Sign Up</button>
+      <button mat-button (click)="isLogin = !isLogin">Login</button>
+    </form>
+
+    <form fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="isLogin">
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="Email" type="email" #email>
+      </mat-form-field>
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="Password" type="password" #password1>
+      </mat-form-field>
+      <button mat-raised-button (click)="isLogin = !isLogin">Sign Up</button>
+      <button mat-button (click)="isLogin = !isLogin">Login</button>
+    </form>
+  </div>
+
+</div>
