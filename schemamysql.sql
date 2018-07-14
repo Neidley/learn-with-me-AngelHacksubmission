@@ -16,6 +16,9 @@ CREATE TABLE users
   username VARCHAR(25) NOT NULL,
   password VARCHAR(60) NOT NULL,
   email VARCHAR(255) DEFAULT NULL,
+  is_mentor boolean DEFAULT FALSE,
+  learning_assistance_cat boolean DEFAULT FALSE,
+  skills VARCHAR(8000) DEFAULT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   PRIMARY KEY (user_id)
 );
