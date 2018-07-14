@@ -37,6 +37,7 @@ CREATE TABLE courseforuser
 (
   user_id INT NOT NULL,
   course_id INT NOT NULL,
+  progress INT DEFAULT NULL,
   PRIMARY KEY (user_id, course_id),
   FOREIGN KEY (user_id) REFERENCES users (user_id),
   FOREIGN KEY (course_id) REFERENCES courses (course_id)
