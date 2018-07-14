@@ -1,5 +1,5 @@
 const configEnv = require('./config.js');
-const configLocal = require('../config.js');
+const configLocal = require('./config.js');
 
 
 const knex = require('knex')({
