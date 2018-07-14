@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-landing',
@@ -8,9 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
+  isCollapsed = false;
+  triggerTemplate = null;
+  @ViewChild('trigger') customTrigger: TemplateRef<void>;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) {
     this.authService.user.subscribe(user => {
@@ -19,6 +24,11 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  /** custom trigger can be TemplateRef **/
+  changeTrigger(): void {
+    this.triggerTemplate = this.customTrigger;
   }
 
   signOut() {

@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTreeModule } from '@angular/material/tree';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,12 @@ import { AuthComponent } from './auth/auth.component';
 import { environment } from '../environments/environment';
 import { LandingComponent } from './landing/landing.component';
 import { FormsModule } from '../../node_modules/@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzSliderModule } from 'ng-zorro-antd';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -36,8 +43,13 @@ import { FormsModule } from '../../node_modules/@angular/forms';
     MatCardModule,
     FormsModule,
     MatIconModule,
+    MatTreeModule,
+    HttpClientModule,
+    NgZorroAntdModule,
+    NzLayoutModule,
+    NzSliderModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
