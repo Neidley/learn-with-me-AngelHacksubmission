@@ -64,9 +64,15 @@
         </nz-header>
         <nz-content style="" *ngIf="subPage === 'courses'" fxLayout="row wrap" fxLayoutAlign="space-evenly start">
                 <nz-modal [(nzVisible)]="isVisible" nzTitle="Congrats You've Been Paired with Jason!" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-                        <p>Content one</p>
-                        <p>Content two</p>
-                        <p>Content three</p>
+                        <img style="align-content: center" src="https://www.scholastic.com/content/dam/teachers/blogs/john-depasquale/headshot/2017-2018/depasquale-circle-200-200.png"/>
+                        <img src="https://image.flaticon.com/icons/png/512/59/59118.png" style="width: 150px" />
+                        <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Jason has been instructing on JavaScript and Computer Science fundamentals for over 10+ years! Additionally, he has a passion for teaching. He is an Austin native and is an integral part of the Capital Factory family as well as an active mentor to startups and students alike!</p>
+                        <ul>
+                            <li>BS, Computer Science - University of Texas</li>
+                            <li>Texas Special Education Certificate - 2015</li>
+                            <li>Founded Beatbook, a music-sharing app, in 2012</li>
+                            <li>When he's not coding, he loves to cook and long walks on the beach</li>
+                        </ul>
                       </nz-modal>
             <nz-card fxFlex="275px" class="hoverable" style="margin-top: 8px;" [nzCover]="coverTemplate" [nzActions]="[actionSetting,actionEdit,actionEllipsis]"
                 *ngFor="let course of courses">
@@ -113,6 +119,7 @@
                                   </ng-container>
             </nz-calendar>
         </nz-content>
+        <nz-footer style="text-align: center;"><img style="height: 40px"src="http://www.ades3510.unt-ixd.com/wp-content/uploads/2017/09/A-Good.png" /></nz-footer>
     </nz-layout>
 </nz-layout>
 <ng-template #trigger>
