@@ -69,12 +69,12 @@
         <nz-content style="" *ngIf="subPage === 'courses'" fxLayout="row wrap" fxLayoutAlign="space-evenly start">
             <nz-card fxFlex="275px" class="hoverable" style="margin-top: 8px;" [nzCover]="coverTemplate" [nzActions]="[actionSetting,actionEdit,actionEllipsis]"
                 *ngFor="let course of courses">
-                <nz-card-meta nzTitle="Card title" nzDescription="This is the description" [nzAvatar]="avatarTemplate"></nz-card-meta>
+                <nz-card-meta nzTitle={{course.title}} nzDescription={{course.description}} [nzAvatar]="avatarTemplate"></nz-card-meta>
                 <ng-template #avatarTemplate>
-                    <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+                    <nz-avatar nzSrc={{course.avatar}} ></nz-avatar>
                 </ng-template>
                 <ng-template #coverTemplate>
-                    <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />
+                    <img alt="example" src={{course.url}} />
                 </ng-template>
                 <ng-template #actionSetting>
                     <i class="anticon anticon-video-" (click)="testScreenShare()"></i>
@@ -89,7 +89,28 @@
         </nz-content>
 
         <nz-content style="margin:0 16px;" *ngIf="subPage === 'calendar'">
-            <nz-calendar [(ngModel)]="date" [(nzMode)]="mode"></nz-calendar>
+            <nz-calendar [(ngModel)]="date" [(nzMode)]="mode">
+                    <ul *nzDateCell="let date" class="events">
+                            <ng-container [ngSwitch]="date.getDate()">
+                              <ng-container *ngSwitchCase="8">
+                                <li *ngFor="let item of listDataMap.eight">
+                                  <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+                                </li>
+                              </ng-container>
+                              <ng-container *ngSwitchCase="11">
+                                    <li *ngFor="let item of listDataMap.eleven">
+                                      <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+                                    </li>
+                                  </ng-container>
+                              </ng-container>
+                            </ul>
+                            <ng-container *nzMonthCell="let month">
+                                    <div *ngIf="getMonthData(month) as monthData" class="notes-month">
+                                      <section>{{ monthData }}</section>
+                                      <span>Backlog number</span>
+                                    </div>
+                                  </ng-container>
+            </nz-calendar>
         </nz-content>
     </nz-layout>
 </nz-layout>

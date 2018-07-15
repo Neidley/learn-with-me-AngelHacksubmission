@@ -34,6 +34,23 @@ app.post('/register/user', async (req, res) => {
   });
 });
 
+app.post('/login', async (req, res) => {
+  const userInfo = await db.checkCredentials(req.body.username);
+  if (userInfo.length) {
+    const checkUser = userInfo[0];
+    if (bcrypt.compareSync(req.body.password, checkUser.password)) {
+      const user = await db.getUser(req.body.username);
+      req.login(user[0], () => {
+        res.send(user);
+      });
+    } else {
+      res.send('your password is incorrect');
+    }
+  } else {
+    res.send('Username does not exist');
+  }
+});
+
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
 });

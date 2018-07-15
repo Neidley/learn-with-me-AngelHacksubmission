@@ -19,7 +19,7 @@ import { environment } from '../environments/environment';
 import { LandingComponent } from './landing/landing.component';
 import { FormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzSliderModule, NzCalendarModule, NzCardModule } from 'ng-zorro-antd';
+import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzSliderModule, NzCarouselModule, NzCalendarModule, NzCardModule } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { VideoDialogComponent } from './video-dialog/video-dialog.component';
@@ -52,6 +52,7 @@ registerLocaleData(en);
     NgZorroAntdModule,
     NzLayoutModule,
     NzSliderModule,
+    NzCarouselModule,
     NzCalendarModule,
     NzCardModule,
     MatDialogModule
