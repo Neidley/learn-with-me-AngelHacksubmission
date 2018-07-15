@@ -44,11 +44,37 @@
                     <span class="nav-text">Events</span>
                 </span>
             </li>
-            <li nz-submenu  (click)="showModal()">
+            <li nz-submenu>
                 <span title>
                     <i class="anticon anticon-smile-o"></i>
-                    <span class="nav-text">Find Me a Mentor!</span>
+                    <span class="nav-text" (click)="showModal()">Find Me a Mentor!</span>
                 </span>
+                <ul>
+                    <li nz-menu-item style="text-align: right;">
+                        <span style="padding-right: 8px;">Jason N</span>
+                        <i style="color:blue" class="anticon anticon-message"></i>
+                        <i style="color:green" class="anticon anticon-phone"></i>
+                        <i style="color:green" class="anticon anticon-video-camera" (click)="testScreenShare()"></i>
+                    </li>
+                    <!-- <li nz-menu-item style="text-align: right;">
+                        <span style="padding-right: 8px;">Steven R</span>
+                        <i style="color:blue" class="anticon anticon-message"></i>
+                        <i style="color:red" class="anticon anticon-phone"></i>
+                        <i style="color:red" class="anticon anticon-video-camera"></i>
+                    </li>
+                    <li nz-menu-item style="text-align: right;">
+                        <span style="padding-right: 8px;">Andrew A</span>
+                        <i style="color:blue" class="anticon anticon-message"></i>
+                        <i style="color:red" class="anticon anticon-phone"></i>
+                        <i style="color:red" class="anticon anticon-video-camera"></i>
+                    </li>
+                    <li nz-menu-item style="text-align: right;">
+                        <span style="padding-right: 8px;">Alex S</span>
+                        <i style="color:blue" class="anticon anticon-message"></i>
+                        <i style="color:red" class="anticon anticon-phone"></i>
+                        <i style="color:red" class="anticon anticon-video-camera"></i>
+                    </li> -->
+                </ul>
             </li>
             <li nz-menu-item>
                 <span>
@@ -63,16 +89,16 @@
             <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
         </nz-header>
         <nz-content style="" *ngIf="subPage === 'courses'" fxLayout="row wrap" fxLayoutAlign="space-evenly start">
-                <nz-modal [(nzVisible)]="isVisible" nzTitle="Congrats You've Been Paired with Jason!" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-                        <p>Content one</p>
-                        <p>Content two</p>
-                        <p>Content three</p>
-                      </nz-modal>
+            <nz-modal [(nzVisible)]="isVisible" nzTitle="Congrats You've Been Paired with Jason!" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+                <p>Content one</p>
+                <p>Content two</p>
+                <p>Content three</p>
+            </nz-modal>
             <nz-card fxFlex="275px" class="hoverable" style="margin-top: 8px;" [nzCover]="coverTemplate" [nzActions]="[actionSetting,actionEdit,actionEllipsis]"
                 *ngFor="let course of courses">
                 <nz-card-meta nzTitle={{course.title}} nzDescription={{course.description}} [nzAvatar]="avatarTemplate"></nz-card-meta>
                 <ng-template #avatarTemplate>
-                    <nz-avatar nzSrc={{course.avatar}} ></nz-avatar>
+                    <nz-avatar nzSrc={{course.avatar}}></nz-avatar>
                 </ng-template>
                 <ng-template #coverTemplate>
                     <img alt="example" src={{course.url}} />
@@ -91,26 +117,26 @@
 
         <nz-content style="margin:0 16px;" *ngIf="subPage === 'calendar'">
             <nz-calendar [(ngModel)]="date" [(nzMode)]="mode">
-                    <ul *nzDateCell="let date" class="events">
-                            <ng-container [ngSwitch]="date.getDate()">
-                              <ng-container *ngSwitchCase="8">
-                                <li *ngFor="let item of listDataMap.eight">
-                                  <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
-                                </li>
-                              </ng-container>
-                              <ng-container *ngSwitchCase="11">
-                                    <li *ngFor="let item of listDataMap.eleven">
-                                      <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
-                                    </li>
-                                  </ng-container>
-                              </ng-container>
-                            </ul>
-                            <ng-container *nzMonthCell="let month">
-                                    <div *ngIf="getMonthData(month) as monthData" class="notes-month">
-                                      <section>{{ monthData }}</section>
-                                      <span>Backlog number</span>
-                                    </div>
-                                  </ng-container>
+                <ul *nzDateCell="let date" class="events">
+                    <ng-container [ngSwitch]="date.getDate()">
+                        <ng-container *ngSwitchCase="8">
+                            <li *ngFor="let item of listDataMap.eight">
+                                <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+                            </li>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="11">
+                            <li *ngFor="let item of listDataMap.eleven">
+                                <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+                            </li>
+                        </ng-container>
+                    </ng-container>
+                </ul>
+                <ng-container *nzMonthCell="let month">
+                    <div *ngIf="getMonthData(month) as monthData" class="notes-month">
+                        <section>{{ monthData }}</section>
+                        <span>Backlog number</span>
+                    </div>
+                </ng-container>
             </nz-calendar>
         </nz-content>
     </nz-layout>
