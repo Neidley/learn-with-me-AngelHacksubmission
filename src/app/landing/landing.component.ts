@@ -29,7 +29,7 @@ export class LandingComponent implements OnInit {
     }, {
     url: "https://udemy-images.udemy.com/course/480x270/1613828_fd1d_3.jpg",
     title: "Data Structures",
-    description: "The Building Blocks for Handling Data"
+    description: "The Building Blocks for Handling Data",
     avatar: "https://youstartlabs.in/wp-content/uploads/2015/01/dsa.png"
     }, {
       url: "https://udemy-images.udemy.com/course/480x270/1631686_c2cf_2.jpg",
@@ -56,7 +56,25 @@ export class LandingComponent implements OnInit {
       title: "Deploying to a PaaS",
       description: "Deploying Your New Apps to the Cloud!",
       avatar: "http://www.axxys.com/wp-content/uploads/2016/03/Cloud.png"
-    }]
+    }];
+    listDataMap = {
+      eight : [
+        { type: 'warning', content: 'Tutor Meetup!' },
+        { type: 'success', content: 'Code Review' }
+      ],
+      eleven: [
+        { type: 'warning', content: 'AMA w/ Mentor' },
+        { type: 'success', content: 'Critical Assessment' },
+        { type: 'error', content: 'Townhall Webinar' },
+        { type: 'error', content: 'SQL Workshop' },
+      ]};
+
+    getMonthData(date: Date): number | null {
+        if (date.getMonth() === 8 ) {
+          return 1394;
+        }
+        return null;
+      };
 
   constructor(
     public authService: AuthService,
