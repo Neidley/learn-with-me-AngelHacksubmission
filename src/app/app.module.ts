@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,14 +22,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzSliderModule, NzCarouselModule, NzCalendarModule, NzCardModule, NzModalModule } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-
+import { VideoDialogComponent } from './video-dialog/video-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    LandingComponent
+    LandingComponent,
+    VideoDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ registerLocaleData(en);
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatSelectModule,
     FormsModule,
     MatIconModule,
     MatTreeModule,
@@ -51,9 +55,13 @@ registerLocaleData(en);
     NzCarouselModule,
     NzCalendarModule,
     NzCardModule,
-    NzModalModule
+    NzModalModule,
+    MatDialogModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    VideoDialogComponent
+  ]
 })
 export class AppModule { }

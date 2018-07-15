@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   { path: 'home', component: LandingComponent },
   { path: 'auth', component: AuthComponent },
-  { path: '**', redirectTo: 'auth', pathMatch: 'full' }
 ];
 
 @NgModule({
