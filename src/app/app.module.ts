@@ -18,7 +18,11 @@ import { environment } from '../environments/environment';
 import { LandingComponent } from './landing/landing.component';
 import { FormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzSliderModule, NzCarouselModule } from 'ng-zorro-antd';
+=======
+import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzSliderModule, NzCalendarModule, NzCardModule } from 'ng-zorro-antd';
+>>>>>>> 529ba3efe7dea468ff17f6e6f1b4cea34b253c40
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 
@@ -48,7 +52,9 @@ registerLocaleData(en);
     NgZorroAntdModule,
     NzLayoutModule,
     NzSliderModule,
-    NzCarouselModule
+    NzCarouselModule,
+    NzCalendarModule,
+    NzCardModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

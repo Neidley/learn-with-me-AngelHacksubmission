@@ -12,7 +12,11 @@ import { Router, } from '@angular/router';
 export class LandingComponent implements OnInit {
   isCollapsed = false;
   triggerTemplate = null;
+  subPage: string = 'courses';
+  date = new Date(2012, 11, 21);
+  mode = 'month';
   @ViewChild('trigger') customTrigger: TemplateRef<void>;
+  courses = [{}, {}, {}, {}, {}, {}, {}, {}]
 
   constructor(
     public authService: AuthService,
