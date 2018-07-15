@@ -29,12 +29,12 @@
 <nz-layout>
     <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
         <div class="title">
-            LEARN WITH ME
+            <p>learn with me.</p>
         </div>
         <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
             <li nz-menu-item (click)="subPage = 'courses'">
                 <span>
-                    <i class="anticon anticon-calendar"></i>
+                    <i class="anticon anticon-book"></i>
                     <span class="nav-text">Learning Paths</span>
                 </span>
             </li>
@@ -44,16 +44,12 @@
                     <span class="nav-text">Events</span>
                 </span>
             </li>
-            <!-- <li nz-submenu>
+            <li nz-submenu  (click)="showModal()">
                 <span title>
-                    <i class="anticon anticon-profile"></i>
-                    <span class="nav-text">Challenges</span>
+                    <i class="anticon anticon-smile-o"></i>
+                    <span class="nav-text">Find Me a Mentor!</span>
                 </span>
-                <ul>
-                    <li nz-menu-item>Team 1</li>
-                    <li nz-menu-item>Team 2</li>
-                </ul>
-            </li> -->
+            </li>
             <li nz-menu-item>
                 <span>
                     <i class="anticon anticon-file"></i>
@@ -67,6 +63,11 @@
             <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
         </nz-header>
         <nz-content style="" *ngIf="subPage === 'courses'" fxLayout="row wrap" fxLayoutAlign="space-evenly start">
+                <nz-modal [(nzVisible)]="isVisible" nzTitle="Congrats You've Been Paired with Jason!" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+                        <p>Content one</p>
+                        <p>Content two</p>
+                        <p>Content three</p>
+                      </nz-modal>
             <nz-card fxFlex="275px" class="hoverable" style="margin-top: 8px;" [nzCover]="coverTemplate" [nzActions]="[actionSetting,actionEdit,actionEllipsis]"
                 *ngFor="let course of courses">
                 <nz-card-meta nzTitle={{course.title}} nzDescription={{course.description}} [nzAvatar]="avatarTemplate"></nz-card-meta>

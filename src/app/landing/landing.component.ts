@@ -68,6 +68,7 @@ export class LandingComponent implements OnInit {
         { type: 'error', content: 'Townhall Webinar' },
         { type: 'error', content: 'SQL Workshop' },
       ]};
+      isVisible = false;
 
     getMonthData(date: Date): number | null {
         if (date.getMonth() === 8 ) {
@@ -83,6 +84,20 @@ export class LandingComponent implements OnInit {
     this.authService.user.subscribe(user => {
       if (!user) this.router.navigateByUrl('auth'); // wont need this with route guard
     })
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
   }
 
   ngOnInit() {
