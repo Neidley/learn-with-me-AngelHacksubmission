@@ -1,7 +1,8 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router, } from '@angular/router';
-
+import { MatDialog } from '@angular/material';
+import { VideoDialogComponent } from '../video-dialog/video-dialog.component';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class LandingComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.authService.user.subscribe(user => {
       if (!user) this.router.navigateByUrl('auth'); // wont need this with route guard
@@ -40,6 +42,18 @@ export class LandingComponent implements OnInit {
       console.log(response);
       this.router.navigateByUrl('auth');
     })
+  }
+
+
+  testScreenShare() {
+    const dialogRef = this.dialog.open(VideoDialogComponent, {
+      width: '90vw',
+      height: '90vh'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
